@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Pool;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class Projectile : MonoBehaviour
     public int damage = 1; // Damage value of the projectile
     public LayerMask targetLayer; // Layer mask for detecting target objects (player or enemy)
 
+    private ObjectPool<Projectile> _pool;
+
+    // Set the object pool for the projectile
+    public void SetObjectPool(ObjectPool<Projectile> pool)
+    {
+        _pool = pool;
+    }
 
     private void Start()
     {
@@ -19,12 +27,9 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
-
-        // Check if the collision is with an object on the enemy layer
+        // Check if the collision is with an object on the target layer
         if (targetLayer == (targetLayer | (1 << other.gameObject.layer)))
         {
-            
             // Get the damageable component of the collided object
             IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
 
@@ -39,10 +44,22 @@ public class Projectile : MonoBehaviour
                 damageable.TakeDamage(damage);
             }
 
+            // Destroy the projectile after collision
+            ReturnToPool();
         }
+    }
 
-        // Destroy the projectile after collision
-        //onHit.Invoke();
-        Destroy(gameObject);
+    // Return the projectile to the object pool
+    private void ReturnToPool()
+    {
+        if (_pool != null)
+        {
+            _pool.Release(this);
+        }
+        else
+        {
+            Debug.LogWarning("Object pool reference is null. Projectile cannot be returned to the pool.");
+            Destroy(gameObject); // If pool reference is null, destroy the projectile
+        }
     }
 }

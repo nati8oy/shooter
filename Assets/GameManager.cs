@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Spawn all enemies at once
-        //SpawnEnemy();
+        SpawnEnemy();
     }
 
     void Update()
