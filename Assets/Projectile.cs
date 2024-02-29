@@ -45,8 +45,11 @@ public class Projectile : MonoBehaviour
             }
 
             // Destroy the projectile after collision
-            ReturnToPool();
+            
         }
+
+        //return it to the pool even if it hit anything else
+        ReturnToPool();
     }
 
     // Return the projectile to the object pool
@@ -54,6 +57,7 @@ public class Projectile : MonoBehaviour
     {
         if (_pool != null)
         {
+            gameObject.SetActive(false);
             _pool.Release(this);
         }
         else

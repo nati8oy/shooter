@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         
 
-        Debug.Log("Player died!");
+        //Debug.Log("Player died!");
         // Implement game over or respawn logic here
         // For example, you can reload the scene or show a game over screen
     }

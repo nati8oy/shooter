@@ -61,7 +61,7 @@ public class ProjectileShooter : MonoBehaviour
                     rb.velocity = newProjectile.transform.up * projectileSpeed;
                 }
                 // Destroy the projectile after its lifetime
-                StartCoroutine(DestroyProjectileAfterLifetime(newProjectile));
+                //StartCoroutine(DestroyProjectileAfterLifetime(newProjectile));
             }
         }
     }
@@ -69,7 +69,12 @@ public class ProjectileShooter : MonoBehaviour
     IEnumerator DestroyProjectileAfterLifetime(Projectile projectile)
     {
         yield return new WaitForSeconds(projectileLifetime);
-        _pool.Release(projectile); // Release the projectile back to the object pool
+        if (_pool != null)
+        {
+            projectile.gameObject.SetActive(false);
+            _pool.Release(projectile);
+        }
+        // Release the projectile back to the object pool
         //Debug.Log("Item returned to pool");
     }
 }
