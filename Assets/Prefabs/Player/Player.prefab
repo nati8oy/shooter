@@ -277,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.11}
+  m_AnchoredPosition: {x: 0.08, y: 0.845}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4135609990010901608
@@ -322,7 +322,7 @@ RectTransform:
   - {fileID: 478028313645691687}
   - {fileID: 7426420788383506046}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -414,6 +414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1f9ba253db9f04ab9ed216a2902ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootOnTimer: 1
+  shotInterval: 0
   onFire:
     m_PersistentCalls:
       m_Calls:
@@ -431,7 +433,7 @@ MonoBehaviour:
         m_CallState: 2
   projectilePrefab: {fileID: 2390266204720930215, guid: 6dc6e1e1cbe4088419b7dc485aa157ce, type: 3}
   projectileSpeed: 40
-  fireInterval: 1
+  fireInterval: 0.5
   projectileLifetime: 3
   shootingAngleRange: 3
   firePoints:
