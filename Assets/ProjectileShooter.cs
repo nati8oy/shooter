@@ -6,6 +6,8 @@ using UnityEngine.Pool;
 
 public class ProjectileShooter : MonoBehaviour
 {
+    [SerializeField] private bool shootOnTimer;
+    [SerializeField] private float shotInterval;
     public UnityEvent onFire;
     public Projectile projectilePrefab; // Prefab of the projectile to shoot
     public float projectileSpeed = 10f; // Speed of the projectile
@@ -14,6 +16,8 @@ public class ProjectileShooter : MonoBehaviour
     public float shootingAngleRange = 3f; // Range of random shooting angle offset in degrees
     public List<Transform> firePoints = new List<Transform>();
     private ObjectPool<Projectile> _pool;
+
+
 
     private void Awake()
     {
@@ -29,8 +33,12 @@ public class ProjectileShooter : MonoBehaviour
 
     void Start()
     {
-        // Start shooting projectiles on a timer
-        StartCoroutine(ShootProjectilesOnInterval());
+        if (shootOnTimer)
+        { 
+            // Start shooting projectiles on a timer
+            StartCoroutine(ShootProjectilesOnInterval());
+        }
+       
     }
 
     IEnumerator ShootProjectilesOnInterval()

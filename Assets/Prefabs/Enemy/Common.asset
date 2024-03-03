@@ -17,3 +17,5 @@ MonoBehaviour:
   movementSpeed: 5
   damage: 1
   canShoot: 1
+  canMove: 0
+  rotating: 1

@@ -12,12 +12,17 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     private bool isGameOver = false;
-
+    [SerializeField] private bool SpawnRandoms;
 
     void Start()
     {
         // Spawn all enemies at once
-        SpawnEnemy();
+
+        if (SpawnRandoms)
+        {
+            SpawnEnemy();
+        }
+
     }
 
     void Update()

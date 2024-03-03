@@ -10,4 +10,8 @@ public class EnemyDataSO : ScriptableObject
     public float movementSpeed;
     public int damage;
     public bool canShoot;
+    public bool canMove;
+    public bool rotating;
+
+
 }
