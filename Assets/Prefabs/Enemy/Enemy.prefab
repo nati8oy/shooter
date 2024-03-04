@@ -525,6 +525,7 @@ MonoBehaviour:
   shootingAngleRange: 3
   firePoints:
   - {fileID: 8488645543207363996}
+  canShoot: 1
 --- !u!1 &8488645543207363999
 GameObject:
   m_ObjectHideFlags: 0
