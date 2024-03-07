@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
         // Move forward constantly
         transform.Translate(Vector3.up * movementSpeed * Time.deltaTime);
 
+        /*
         // Rotate left when A key is pressed
         if (Input.GetKey(KeyCode.A))
         {
@@ -31,7 +32,10 @@ public class PlayerController : MonoBehaviour
         {
             RotatePlayer(-rotationSpeed * Time.deltaTime);
         }
+        */
+
     }
+
 
     void RotatePlayer(float rotationAmount)
     {
